@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <title>Вход</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='log.css')}}">
+</head>
+
+<body>
+    <h1>Вход</h1>
+    <form action="/login" method="post">
+        {%if erlog%}
+        <input type="text" name="name" placeholder="Введите логин" class="error">
+        {%else%}
+        <input type="text" name="name" placeholder="Введите логин">
+        {%endif%}
+        {%if erpass%}
+        <div class="eye">
+            <input type="password" name="password" placeholder="Введите пароль" class="error" id="t">
+            <img src="{{url_for('static', filename='icons/eye.png')}}" id="r">
+        </div>
+        {%else%}
+        <div class="eye">
+             <input type="password" name="password" placeholder="Введите пароль" id="t">
+            <img src="{{url_for('static', filename='icons/eye.png')}}" id="r">
+        </div>
+        {%endif%}
+        <button>Войти</button>
+    </form>
+    <div id="line">
+        <div class="point"></div>
+        <div class="point"></div>
+        <div class="point"></div>
+        <div class="point"></div>
+    </div>
+    <button id="hg">Зарегаться</button>
+    {%if errors%}
+    <ol>
+
+        {%for i in errors%}
+        <li> {{i}}</li>
+        {%endfor%}
+    </ol>
+    {%endif%}
+    <script src="{{url_for('static', filename='log.js')}}"></script>
+</body>
+
+</html>

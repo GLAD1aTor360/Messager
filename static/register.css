@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+
+#hg{
+    color: orangered;
+}
+body{
+    background-image: url("m.gif");
+    background-size: cover;
+}
+input{
+    padding: 8px;
+    border-radius: 10px;
+    border-color: #fcfcfc;
+    display: block;
+    margin-bottom: 5px;
+    font-family: "Gochi Hand", cursive;
+    width: 211px;
+    height: 35px;
+}
+button{
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    width: 210px;
+    font-family: "Gochi Hand", cursive;
+    transition: 0.3s;
+}
+button:hover{
+    background-color: #ffbb00;
+    color: rgb(0, 0, 0);
+}
+form{
+    margin-left: 900px;
+    margin-top: 250px;
+}
+ol{
+    margin-left: 450px;
+    color: rgb(255, 0, 0);
+    font-size: 30px;
+}
+#hg{
+    color: black;
+    margin-left: 900px;
+    margin-top: 20px;
+}
+.point{
+    width: 5px;
+    height: 5px;
+    border-radius: 10px;
+    background-color: #ffbb00;
+    margin-top: 7px;
+    margin-left: 1000px;
+}
+h1{
+    color: #ffbb00;
+    margin-left: 840px;
+    font-size: 60px;
+    margin-top: 50px;
+}
+.error{
+    border-color: #ff0000;
+    animation: shake 0.19s;
+}
+.error::placeholder{
+    color: #ff0000;
+}
+@keyframes shake{
+    0% {transform: translateX(0);}
+    20% {transform: translateX(6px);}
+    40% {transform: translateX(-6px);}
+    60% {transform: translateX(6px);}
+    80% {transform: translateX(-6px);}
+    100% {transform: translateX(0px);}
+}
+.eye{
+    display: flex;
+    align-items: center
+}
+img{
+    width: 20px;
+    height: 20px;
+    margin-left: -30px;
+    margin-top: -5px;
+
+}

@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>Главная</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+    </head>
+    <body>
+            <div id="set"></div>
+            <div id="chats">
+                <div id="search">
+                    {%if chats%}
+                    <h1 id="two">Чаты <button id="plus19">+</button></h1>
+                    <input type="text" id="one" placeholder="Найти">
+                    {%else%}
+                    <h1 id="two">Чаты</h1>
+                    {%endif%}
+                </div>
+                {%if chats%}
+                {%for x in chats%}
+                <div class="dial">
+                    <img src="https://resizer.mail.ru/p/ab1725d2-7c0c-5543-8eec-9ed3515cceaa/AQAGjHL5xXFWZNOsxwbxnORTylRU0yk0-dq5rcUCVmOzb6E5YUvDXQI82OW0BhKWCLP2AdDP67BESZhGDWb9HEUbC4g.jpg" class="yamal">
+                    <div class="rname">
+                        <span class="conname">Имя контакта</span>
+                        <span class="text">Hola</span>
+                    </div>
+                </div>
+                {%endfor%}
+                
+                {%else%}
+                <button id="plus">+</button>
+                <h3 id="u">Добавьте чат</h3>
+                {%endif%}
+            </div>
+            <div id="chat">
+                <div id="messages">
+                    <div class="message from">
+                        Пр! Как дела?
+                    </div>
+                    <div class="message me">
+                        Пр! Нормaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    </div>
+                </div>
+                <div id="soobshenie">
+                    <textarea name="" id="textarea" placeholder="Сообщение"></textarea>
+                    <img src="{{url_for('static', filename='icons/send.png')}}" id="strelka">
+                </div>
+            </div>
+            <div id="dark" hidden>
+                <form action="" id="form">
+                    <input type="text" placeholder="Введите номер телефона" id="phone">
+                    <button id="add">Добавить</button>
+                </form>
+            </div>
+            <script src="{{url_for('static', filename='main.js')}}"></script>
+            <script src="{{url_for('static', filename='phone.js')}}"></script>
+    </body>
+</html>

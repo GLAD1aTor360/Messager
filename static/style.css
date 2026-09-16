@@ -1,0 +1,10 @@
+body{
+    background-color: rgba(17, 15, 15, 0.726);
+}
+h1{
+    color: aliceblue;
+    margin-left: 350px;
+}
+h1:hover{
+    color: rgb(0, 162, 255);
+}

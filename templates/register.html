@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Зарегестрируйтесь</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='register.css')}}">
+    </head>
+    <body>
+        <h1>Регистрация</h1>
+        <form action="/register" method="post">
+            {%if erlog%}
+                <input type="text" name="name" placeholder="Введите логин" class="error">
+            {%else%}
+                <input type="text" name="name" placeholder="Введите логин">
+            {%endif%}
+            {%if erpass1%}
+            <div class="eye">
+                <input type="password" name="password" placeholder="Введите пароль" class="error" id="t">
+                <img src="{{url_for('static', filename='icons/eye.png')}}" id="r">
+            </div>
+            {%else%}
+            <div class="eye">
+                <input type="password" name="password" placeholder="Введите пароль" id="t">
+                <img src="{{url_for('static', filename='icons/eye.png')}}" id="r">
+            </div>
+            {%endif%}
+            {%if erpass2%}
+            <div class="eye">
+                <input type="password" name="password2" placeholder="Подтвердите пароль" class="error" id="t2">
+                <img src="{{url_for('static', filename='icons/eye.png')}}" id="r2">
+            </div>
+            {%else%}
+            <div class="eye">
+                <input type="password" name="password2" placeholder="Подтвердите пароль" id="t2">
+                <img src="{{url_for('static', filename='icons/eye.png')}}" id="r2">
+            </div>    
+            {%endif%}
+            <button>Зарегаться</button>
+        </form>
+        <div id="line">
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+        </div>
+        <button id="hg">Войти</button>
+        <script src="{{url_for('static', filename='register.js')}}"></script>
+    </body>
+</html>

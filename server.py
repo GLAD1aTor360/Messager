@@ -1,11 +1,14 @@
-from flask import Flask,render_template,request, redirect, url_for
+from flask import Flask,render_template,request, redirect, url_for, session
 import db
 app=Flask("Сервер")
 
+app.config["SECRET_KEY"]="456988T4W986YBT7N43N987Y3409856nB 045687B540"
 
 
 @app.route("/register", methods=["GET", "POST"])
 def reg():
+    if "login" in session:
+            return redirect(url_for("main"))
     if request.method=="GET":
         return render_template("register.html")
     if request.method=="POST":
@@ -29,29 +32,33 @@ def reg():
         if erlog!=None or erpass1!=None or erpass2!=None:
             return render_template("register.html", erlog=erlog, erpass1=erpass1, erpass2=erpass2)
         b=db.create_user(login, password)
+        session["login"]=login
         return render_template("settings.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
 def log():
+    if "login" in session:
+        return redirect(url_for("main"))
     if request.method=="GET":
         return render_template("log.html")
     if request.method=="POST":
-        log=request.form.get("name")
+        login=request.form.get("name")
         password=request.form.get("password")
         erlog=None
         erpass=None
-        if not log:
+        if not login:
             erlog=("Введите логин!")
         if not password:
             erpass=("Введите пароль!")
-        t=db.check_user(log, password)
+        t=db.check_user(login, password)
         if t==False:
             erlog="Такого логина не существует!"
             erpass="Неверный пароль!"
         if erlog!=None or erpass!=None:
             return render_template("log.html", erlog=erlog, erpass=erpass)
         if t==True:
+            session["login"]=login
             return redirect(url_for("main"))
         
 
@@ -59,6 +66,8 @@ def log():
 
 @app.route("/main", methods=["GET", "POST"])
 def main():
+    if "login" not in session:
+        return redirect(url_for("log"))
     if request.method=="GET":
         return render_template("main.html", chats=[1,2,3,4,5])
     

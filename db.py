@@ -1,5 +1,26 @@
 import pickle
 users=[]
+chats={}
+def create_chat(chatname, login):
+     chat_id=len(chats)
+     chats[chat_id]={
+         "name":chatname,
+         "users":[login],
+         "id":chat_id
+     }
+     g=saves()
+
+
+def find_chats_by_login(login):
+    userchats=[]
+    for chat_id in chats:
+        chat_info=chats[chat_id]
+        chat_users=chat_info["users"]
+        if login in chat_users:
+            userchats.append(chat_info)
+    return(userchats)
+
+
 def create_user(login, password):
     user=[login, password]
     users.append(user)
@@ -21,13 +42,13 @@ def check_user(login, password):
 
 def saves():
     f=open("db", "wb")
-    pickle.dump(users, f)
+    pickle.dump([users, chats], f)
     f.close()
 
 
 def load():
-    global users
+    global users, chats
     g=open("db", "rb")
-    users=pickle.load(g)
+    users, chats=pickle.load(g)
     g.close()
 l=load()

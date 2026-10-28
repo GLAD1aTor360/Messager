@@ -30,18 +30,26 @@ if(plus19!=null && plus19!=undefined){
     })
 }
 let g=document.getElementById("textarea")
+let gh=g.offsetHeight
 g.addEventListener("input", ()=>{
-        g.style.height="auto"
-        g.style.height=(g.scrollHeight)+"px"
-        g.style.maxHeight="300px"
+    g.style.height=gh+"px"
+    if(g.scrollHeight>gh){
+        g.style.height=g.scrollHeight+"px"
+        if(g.scrollHeight>200){
+            g.style.height="200px"
+        }
+    }
 })
 
 let poisk=document.getElementById("one")
 poisk.addEventListener("input", ()=>{
     let te=poisk.value
     for(let x of document.getElementsByClassName("conname")){
-        if(x.textContent.contains(te)){
-            
+        if(x.textContent.toLowerCase().includes(te.toLowerCase())){
+            x.parentElement.parentElement.style.display="flex"
+        }
+        else{
+            x.parentElement.parentElement.style.display="none"
         }
     }
 })
